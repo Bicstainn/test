@@ -24,6 +24,15 @@ struct SettingsView: View {
     /// Show clear data confirmation
     @State private var showClearConfirmation: Bool = false
 
+    /// Show category management
+    @State private var showCategoryManagement: Bool = false
+
+    /// Show export view
+    @State private var showExport: Bool = false
+
+    /// Show import view
+    @State private var showImport: Bool = false
+
     var body: some View {
         NavigationStack {
             Form {
@@ -33,6 +42,12 @@ struct SettingsView: View {
                         showShortcutGuide = true
                     } label: {
                         Label("设置快捷指令", systemImage: "wand.and.stars")
+                    }
+
+                    Button {
+                        showCategoryManagement = true
+                    } label: {
+                        Label("分类管理", systemImage: "folder.badge.gearshape")
                     }
                 } header: {
                     Text("快速设置")
@@ -119,6 +134,9 @@ struct SettingsView: View {
             .navigationTitle("设置")
             .sheet(isPresented: $showShortcutGuide) {
                 ShortcutGuideView()
+            }
+            .sheet(isPresented: $showCategoryManagement) {
+                CategoryManagementView()
             }
             .sheet(isPresented: $showAbout) {
                 AboutView()
