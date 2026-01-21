@@ -17,8 +17,11 @@ struct MoneyBuddyApp: App {
     @StateObject private var urlHandler = URLHandler.shared
 
     init() {
+        // Initialize app configuration
+        AppConfig.initialize()
+
         do {
-            let schema = Schema([Transaction.self])
+            let schema = Schema([Transaction.self, Ledger.self])
             let config = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
             modelContainer = try ModelContainer(for: schema, configurations: [config])
         } catch {
