@@ -1,0 +1,167 @@
+{
+  "version": "1.0",
+  "banks": [
+    {
+      "id": "icbc",
+      "name": "工商银行",
+      "senderNumbers": ["95588"],
+      "keywords": ["工商银行", "工行", "ICBC"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "支出\\(人民币\\)([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        },
+        "income": {
+          "amountPattern": "收入\\(人民币\\)([0-9]+\\.?[0-9]*)元",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "ccb",
+      "name": "建设银行",
+      "senderNumbers": ["95533"],
+      "keywords": ["建设银行", "建行", "CCB"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "支出人民币([0-9]+\\.?[0-9]*)",
+          "merchantPattern": "(微信支付|支付宝|云闪付|.+?消费)",
+          "cardPattern": "尾号(\\d{4})"
+        },
+        "income": {
+          "amountPattern": "存入人民币([0-9]+\\.?[0-9]*)",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "abc",
+      "name": "农业银行",
+      "senderNumbers": ["95599"],
+      "keywords": ["农业银行", "农行", "ABC"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "消费([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        },
+        "income": {
+          "amountPattern": "存入([0-9]+\\.?[0-9]*)元",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "boc",
+      "name": "中国银行",
+      "senderNumbers": ["95566"],
+      "keywords": ["中国银行", "中行", "BOC"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "支出([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "(\\d{4})卡"
+        },
+        "income": {
+          "amountPattern": "收入([0-9]+\\.?[0-9]*)元",
+          "cardPattern": "(\\d{4})卡"
+        }
+      }
+    },
+    {
+      "id": "cmb",
+      "name": "招商银行",
+      "senderNumbers": ["95555"],
+      "keywords": ["招商银行", "招行", "CMB"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "消费.*?([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        },
+        "income": {
+          "amountPattern": "收入.*?([0-9]+\\.?[0-9]*)元",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "comm",
+      "name": "交通银行",
+      "senderNumbers": ["95559"],
+      "keywords": ["交通银行", "交行", "COMM"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "消费([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "citic",
+      "name": "中信银行",
+      "senderNumbers": ["95558"],
+      "keywords": ["中信银行", "中信", "CITIC"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "消费([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "spdb",
+      "name": "浦发银行",
+      "senderNumbers": ["95528"],
+      "keywords": ["浦发银行", "浦发", "SPDB"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "支出([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "ceb",
+      "name": "光大银行",
+      "senderNumbers": ["95595"],
+      "keywords": ["光大银行", "光大", "CEB"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "消费([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    },
+    {
+      "id": "pab",
+      "name": "平安银行",
+      "senderNumbers": ["95511"],
+      "keywords": ["平安银行", "平安", "PAB"],
+      "patterns": {
+        "expense": {
+          "amountPattern": "支出([0-9]+\\.?[0-9]*)元",
+          "merchantPattern": "在(.+?)消费",
+          "cardPattern": "尾号(\\d{4})"
+        }
+      }
+    }
+  ],
+  "genericPatterns": {
+    "expense": {
+      "amountPattern": "(?:支出|消费|扣款).*?([0-9]+\\.?[0-9]*)元?|人民币-?([0-9]+\\.?[0-9]*)",
+      "merchantPattern": "在(.+?)(?:消费|支付|扣款)",
+      "cardPattern": "尾号(\\d{4})"
+    },
+    "income": {
+      "keywords": ["收入", "到账", "转入", "存入", "入账"],
+      "amountPattern": "(?:收入|到账|转入|存入).*?([0-9]+\\.?[0-9]*)元?",
+      "cardPattern": "尾号(\\d{4})"
+    }
+  }
+}
